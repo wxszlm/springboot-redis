@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.yxf.redis.dao.UserMapper">
+
+    <resultMap id="resultMap" type="top.yxf.redis.entity.User">
+        <id jdbcType="INTEGER" property="userId" column="f_user_id"/>
+        <result column="f_user_name" jdbcType="INTEGER" property="userName"/>
+        <result column="f_create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="F_UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="f_user_sex" jdbcType="INTEGER" property="userSex"/>
+    </resultMap>
+
+    <cache type="top.yxf.redis.config.RedisCache"/>
+
+    <select id="listUser" resultMap="resultMap">
+        select f_user_id,f_user_name,F_CREATE_TIME,F_UPDATE_TIME,f_user_sex  from t_user
+    </select>
+
+</mapper>
